@@ -12,7 +12,10 @@ namespace sso_authentication.Pages
     {
       var props = new AuthenticationProperties
       {
-        RedirectUri = "/secure"
+        RedirectUri = Url.Page("SessionHandler"),
+        Items = {
+          { "schema", "Google" } // Useful in case of multiple authentication Services
+        }
       };
 
       return Challenge(props, "Google");
